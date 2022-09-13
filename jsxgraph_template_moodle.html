@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>JSXGraph template</title>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <!-- JSXGraph (Lokal) -->
     <!--<link href="lib/jsxgraph.css" rel="stylesheet" type="text/css" />
     <script src="lib/jsxgraphcore.js" type="text/javascript" charset="UTF-8"></script>-->
@@ -21,6 +20,27 @@
     <!-- Font Awesome 4 -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" />
+    <!-- JSXGraph Styles aus dem Projekt IdeaL -->
+    <style>
+        /* JSXGraph div */
+        .jxgbox {
+            /* klassisches Layout */
+            border: none;
+            border-radius: 0;
+            background-color: inherit;
+            /* responsive */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* JSXGraph Textbox */
+        .ideal-jsxgraph-textbox {
+            background-color: #f8f9fa;
+            border: 1px solid var(--gray);
+            padding: .5em;
+            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.12);
+        }
+    </style>
     <!-- Mathjax Displaystyle Workaround -->
     <style>
         .MathJax_Display {
@@ -31,7 +51,7 @@
 
 <body>
 
-    <main>
+    <main style="margin: 1em;">
 
         <h1>
             <center>JSXGraph Moodle Filter Template</center>
@@ -124,7 +144,7 @@
                             },
                             labels: ["1"]
                         })
-                
+
 
                         /*-----------------------------------------*/
 
@@ -132,11 +152,16 @@
                         /* JSXGraph Elemente */
                         /*-----------------------------------------*/
 
+
                         const p1 = board.create("point", p1Coords);
-                        const text1 = board.create("text", [2, 2, () => "\\(x = \\) " + p1.X().toFixed(2) + "<br>\\(y = \\) " + p1.Y().toFixed(2)], { parse: false })
+                        const text1 = board.create("text", [3, 3, () => "\\(x = \\) " + p1.X().toFixed(2) + "<br>\\(y = \\) " + p1.Y().toFixed(2)], {
+                            parse: false, cssClass: "ideal-jsxgraph-textbox", anchorY: "top", anchorX: "left"
+                        })
                         const f1 = board.create("functiongraph", [function (x) { return -0.5 * x ** 2 - x; }], {
                             name: "\\(f_x\\)", withLabel: true, label: { color: "blue", position: "top" }
                         })
+
+
 
                         /*-----------------------------------------*/
 
