@@ -42,11 +42,11 @@
         }
     </style>
     <!-- Mathjax Displaystyle Workaround -->
-    <style>
+    <!--<style>
         .MathJax_Display {
             margin: 0 !important;
         }
-    </style>
+    </style>-->
 </head>
 
 <body>
@@ -58,11 +58,11 @@
             <hr>
         </h1>
 
-        <!-- STACK Frage -->
+        <!-- Beschreibung -->
         <div class="que description informationitem">
             <div class="formulation">
                 <div class="qtext">
-                    <p>This is a description.</p>
+                    <p>This is a moodle description.</p>
 
                     <!-- JSXGraph Applet div -->
                     <div id="jxgbox" class="jxgbox" style="width:500px; height:500px; margin: auto"></div>
@@ -99,6 +99,11 @@
                         const p1Coords = [1, 2];
 
                         /*-----------------------------------------*/
+
+
+                        /* Board und Koordinatensystem */
+                        /*-----------------------------------------*/
+
                         /* Board */
                         const board = JXG.JSXGraph.initBoard(
                             "jxgbox",
@@ -109,6 +114,7 @@
                                 showCopyright: false,
                                 keepaspectratio: true,
                                 showInfobox: false,
+                                showNavigation: false,
                                 boundingbox: [-5, 5, 5, -5],
                                 pan: { enabled: true },
                                 zoom: { enabled: true },
@@ -125,7 +131,7 @@
                         const yAxis = board.create('axis', [[0, 0], [0, 1]],
                             {
                                 name: function () { return '\\( y \\)' },
-                                withLabel: true, drawLabels: true,
+                                withLabel: true,
                                 label: { position: 'rt', offset: [-12, 2], anchorY: "top" },
                                 ticks: { visible: false, ticksDistance: 1, minorTicks: 1, drawLabels: false }
                             });
@@ -145,24 +151,14 @@
                             labels: ["1"]
                         })
 
-
                         /*-----------------------------------------*/
 
 
                         /* JSXGraph Elemente */
                         /*-----------------------------------------*/
 
-
                         const p1 = board.create("point", p1Coords);
-                        const text1 = board.create("text", [3, 3, () => "\\(x = \\) " + p1.X().toFixed(2) + "<br>\\(y = \\) " + p1.Y().toFixed(2)], {
-                            parse: false, cssClass: "ideal-jsxgraph-textbox", anchorY: "top", anchorX: "left"
-                        })
-                        const f1 = board.create("functiongraph", [function (x) { return -0.5 * x ** 2 - x; }], {
-                            name: "\\(f_x\\)", withLabel: true, label: { color: "blue", position: "top" }
-                        })
-
-
-
+     
                         /*-----------------------------------------*/
 
 
